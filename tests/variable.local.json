@@ -1,0 +1,7 @@
+{
+    "LOG_LEVEL": "INFO",
+    "POWERTOOLS_LOGGER_LOG_EVENT": "true",
+    "AWS_REGION": "us-east-1",
+    "EnvPrefix": "",
+    "run_local": "true"
+}
