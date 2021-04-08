@@ -24,16 +24,17 @@ Resources:
         ApplicationId: arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer
         SemanticVersion: 1.11.0
 
-Resources:
   HelloWorldFunction:
     Type: AWS::Serverless::Function 
     Properties:
       Layers:
         - !GetAtt AwsLambdaPowertoolsPythonLayer.Outputs.LayerVersionArn
-      FunctionName: !Sub ${EnvPrefix}YokotenCheck
+      FunctionName: !Sub ${EnvPrefix}Lambda
       CodeUri: functions/hello_world/
       Handler: app.lambda_handler
       Runtime: python3.7
+      # Policies:
+        # - SQSPollerPolicy:
       Events:
         HelloWorld:
           Type: Api 
@@ -43,6 +44,6 @@ Resources:
 
 Outputs:
   
-  HelloWorldApi:
-    Description: "API Gateway endpoint URL for Prod stage for Hello World function"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"
+  # HelloWorldApi:
+  #   Description: "API Gateway endpoint URL for Prod stage for Hello World function"
+  #   Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"
