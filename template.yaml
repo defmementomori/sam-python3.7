@@ -1,4 +1,4 @@
-AWSTemplateFormatVersion: '2010-09-09'
+AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: sample-stepfunction-python3.7
 
@@ -15,7 +15,7 @@ Globals:
         TZ: Asia/Tokyo
         EnvPrefix: !Ref EnvPrefix
         LOG_LEVEL: INFO
-              
+
 Resources:
   AwsLambdaPowertoolsPythonLayer:
     Type: AWS::Serverless::Application
@@ -25,7 +25,7 @@ Resources:
         SemanticVersion: 1.11.0
 
   HelloWorldFunction:
-    Type: AWS::Serverless::Function 
+    Type: AWS::Serverless::Function
     Properties:
       Layers:
         - !GetAtt AwsLambdaPowertoolsPythonLayer.Outputs.LayerVersionArn
@@ -34,16 +34,16 @@ Resources:
       Handler: app.lambda_handler
       Runtime: python3.7
       # Policies:
-        # - SQSPollerPolicy:
+      # - SQSPollerPolicy:
       Events:
         HelloWorld:
-          Type: Api 
+          Type: Api
           Properties:
             Path: /hello
             Method: get
 
 Outputs:
-  
+
   # HelloWorldApi:
   #   Description: "API Gateway endpoint URL for Prod stage for Hello World function"
   #   Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"

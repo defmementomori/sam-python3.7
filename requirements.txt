@@ -2,4 +2,7 @@ aws-lambda-powertools
 boto3
 awscli
 pytest
+pytest-cov
 ptvsd
+flake8
+autopep8
