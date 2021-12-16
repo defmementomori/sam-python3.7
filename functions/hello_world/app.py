@@ -1,13 +1,22 @@
-import json
 import os
 
-env=os.environ.get("run_local")
+from aws_lambda_powertools import Logger
 
-def function_sample( num1:int, num2:int) -> int:
-    return num1 + num2
+region = os.environ.get("AWS_REGION")
+logger = Logger(service="payment")
+
+
+def function_sample(num1: int, num2: int) -> int:
+    res = num1 + num2
+    print(res)
+    return res
+
 
 def lambda_handler(event, context):
-    print("run_local? {0}".format(env))
+
+    logger.append_keys(region=region)
+    logger.info("sample log")
+
     return {
         "statusCode": 200
     }
