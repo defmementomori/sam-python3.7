@@ -8,14 +8,15 @@ logger = Logger(service="payment")
 
 def function_sample(num1: int, num2: int) -> int:
     res = num1 + num2
-    print(res)
     return res
 
 
 def lambda_handler(event, context):
 
-    logger.append_keys(region=region)
-    logger.info("sample log")
+    print(function_sample(3,4))
+
+    # logger.append_keys(region=region)
+    # logger.info("sample log")
 
     return {
         "statusCode": 200
